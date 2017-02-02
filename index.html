@@ -88,5 +88,23 @@
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCRnG6JU5jhjISl8DWoYWExXmZFyjQ4RdE",
+        authDomain: "medlendgitio.firebaseapp.com",
+        databaseURL: "https://medlendgitio.firebaseio.com",
+        storageBucket: "medlendgitio.appspot.com",
+        messagingSenderId: "143825226335"
+      };
+      firebase.initializeApp(config);
+      var database = firebase.database().ref().child('test');
+
+
+      //var rootRef = firebase.database.ref();
+
+      console.log(database);
+    </script>
   </body>
 </html>
