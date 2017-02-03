@@ -99,12 +99,48 @@
         messagingSenderId: "143825226335"
       };
       firebase.initializeApp(config);
-      var database = firebase.database().ref().child('test');
+      //var database = firebase.database().ref().child('test/');
+
+//      var leadsRef = firebase.database().ref('test');
+//      leadsRef.on('value', function(snapshot) {
+//        console.log(leadsRef)
+//        snapshot.forEach(function(childSnapshot) {
+//          var childData = childSnapshot.val();
+//          console.log(childData)
+//        });
+//
+//      });
 
 
-      //var rootRef = firebase.database.ref();
+      var ref = firebase.database().ref('test/');
 
-      console.log(database);
+
+      ref.once('value')
+              .then(function(snapshot) {
+                console.log("once");
+                console.log(snapshot.val());
+                console.log("--------------");
+              });
+
+      ref.on("value", function(snapshot) {
+        console.log("on");
+        console.log(snapshot.val());
+        console.log("--------------");
+      }, function (error) {
+        console.log("Error: " + error.code);
+      });
+
+      setTimeout(writeData,5000);
+
+     // writeData();
+
+      function writeData() {
+        firebase.database().ref('test/').set({
+          1: 'tooo',
+          2: 'new',
+          4: 'h'
+        });
+      }
     </script>
   </body>
 </html>
